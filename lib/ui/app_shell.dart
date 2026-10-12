@@ -51,10 +51,7 @@ class _AppShellState extends State<AppShell> {
   @override
   Widget build(BuildContext context) {
     final pages = [
-      _UploadPage(
-        controller: _controller,
-        onViewActivity: () => setState(() => _selectedIndex = 2),
-      ),
+      _UploadPage(controller: _controller, onViewActivity: () => setState(() => _selectedIndex = 2)),
       _DownloadsPage(controller: _controller),
       _ActivityPage(controller: _controller),
     ];
@@ -128,10 +125,7 @@ class _AppShellState extends State<AppShell> {
 }
 
 class _UploadPage extends StatelessWidget {
-  const _UploadPage({
-    required this.controller,
-    required this.onViewActivity,
-  });
+  const _UploadPage({required this.controller, required this.onViewActivity});
 
   final TransferController controller;
   final VoidCallback onViewActivity;
@@ -233,12 +227,7 @@ class _UploadPage extends StatelessWidget {
         _SectionHeading(
           title: 'Recent transfers',
           subtitle: recent.isEmpty ? 'Your transfers will appear here.' : null,
-          action: recent.isEmpty
-              ? null
-              : TextButton(
-                  onPressed: onViewActivity,
-                  child: const Text('View all'),
-                ),
+          action: recent.isEmpty ? null : TextButton(onPressed: onViewActivity, child: const Text('View all')),
         ),
         const SizedBox(height: 8),
         if (recent.isEmpty)
@@ -255,10 +244,6 @@ class _UploadPage extends StatelessWidget {
             ),
           ),
         const SizedBox(height: 12),
-        Text(
-          'Files are sent to ${PosApi.baseUrl}',
-          style: Theme.of(context).textTheme.bodySmall?.copyWith(color: colors.onSurfaceVariant),
-        ),
       ],
     );
   }

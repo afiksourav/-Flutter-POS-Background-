@@ -60,10 +60,7 @@ class _PosTransferAppState extends State<PosTransferApp> {
           surface: const Color(0xFFF7F9FC),
         ),
         scaffoldBackgroundColor: const Color(0xFFF7F9FC),
-        appBarTheme: const AppBarTheme(
-          backgroundColor: Color(0xFFF7F9FC),
-          surfaceTintColor: Colors.transparent,
-        ),
+        appBarTheme: const AppBarTheme(backgroundColor: Color(0xFFF7F9FC), surfaceTintColor: Colors.transparent),
         cardTheme: CardThemeData(
           color: Colors.white,
           elevation: 0,
@@ -76,13 +73,8 @@ class _PosTransferAppState extends State<PosTransferApp> {
       home: _checkingSession
           ? const Scaffold(body: Center(child: CircularProgressIndicator()))
           : _token == null
-              ? LoginScreen(api: _api, onLogin: _onLogin)
-              : AppShell(
-                  key: ValueKey(_token),
-                  token: _token!,
-                  api: _api,
-                  onLogout: _onLogout,
-                ),
+          ? LoginScreen(api: _api, onLogin: _onLogin)
+          : AppShell(key: ValueKey(_token), token: _token!, api: _api, onLogout: _onLogout),
     );
   }
 }
